@@ -1,0 +1,26 @@
+services:
+  berries_app:
+    build: ./berries_app
+    container_name: berries_app
+    volumes:
+      - "./berries_app:/usr/src/app"
+    expose:
+      - 5000
+    ports:
+      - "5000:5000"
+    networks:
+      - local_access
+    logging:
+      options:
+        max-size: "5m"
+        max-file: "2"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health_check"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    restart: always
+
+networks:
+  local_access:
