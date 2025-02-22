@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "25587e1d-400d-41ec-9970-299144154b4b",
+		"name": "Poke Berries",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14467676"
+	},
+	"item": [
+		{
+			"name": "Poke Berries APIs",
+			"item": [
+				{
+					"name": "get_poke_berries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/berry",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"berry"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_poke_berry_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/berry/1",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"berry",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_poke_berry_by_name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://pokeapi.co/api/v2/berry/chesto",
+							"protocol": "https",
+							"host": [
+								"pokeapi",
+								"co"
+							],
+							"path": [
+								"api",
+								"v2",
+								"berry",
+								"chesto"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "My APIs",
+			"item": [
+				{
+					"name": "health_check",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/health_check",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"health_check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allBerryStats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/allBerryStats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"allBerryStats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "histogram",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/histogram",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"histogram"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
