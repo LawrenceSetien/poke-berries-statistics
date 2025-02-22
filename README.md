@@ -1,5 +1,10 @@
 # Instructions
-1. Install the app:
+1. Copy and rename `example.env` to `.env`
+```sh
+cp example.env .env
+```
+
+2. Install the app:
 ```sh
 bash install.sh
 ```

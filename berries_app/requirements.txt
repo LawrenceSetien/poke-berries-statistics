@@ -1,1 +1,6 @@
 flask
+gunicorn
+requests
+aiohttp
+matplotlib
+pytest

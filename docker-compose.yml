@@ -2,6 +2,7 @@ services:
   berries_app:
     build: ./berries_app
     container_name: berries_app
+    # Comment volume when running in production mode
     volumes:
       - "./berries_app:/usr/src/app"
     expose:
@@ -10,6 +11,8 @@ services:
       - "5000:5000"
     networks:
       - local_access
+    environment:
+      - ENV_MODE=$ENV_MODE
     logging:
       options:
         max-size: "5m"
