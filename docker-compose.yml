@@ -2,7 +2,6 @@ services:
   berries_app:
     build: ./berries_app
     container_name: berries_app
-    # Comment volume when running in production mode
     volumes:
       - "./berries_app:/usr/src/app"
     expose:

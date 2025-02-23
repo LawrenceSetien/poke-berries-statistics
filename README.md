@@ -9,13 +9,18 @@ cp example.env .env
 bash install.sh
 ```
 
+3. Run tests:
+```sh
+bash 
+```
+
 # TODO
 - [x] Create an overview structure of the project.
 - [x] Start flask with basic API.
 - [x] Dockerize flask app.
 - [x] Config debug mode.
-- [ ] Get data from Poke API.
-- [ ] Improve API.
+- [x] Get data from Poke API.
+- [x] Improve API.
 - [ ] Write instructions:
     - [ ] Install docker and start venv?
     - [ ] Run docker compose file.
@@ -23,6 +28,6 @@ bash install.sh
     - ...
 
 Others:
-- [ ] Add unit tests
-- [ ] Add smoke tests
+- [x] Add unit tests
+- [x] Add smoke tests
 - [ ] ...
