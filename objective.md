@@ -1,6 +1,6 @@
 
 # General rules
-- [ ] Commit your changes to a public repository in GitHub.
+- [x] Commit your changes to a public repository in GitHub.
 - [x] Add a README.md with instructions to run the code.
 
 # Support the following endpoint
