@@ -28,7 +28,7 @@ This endpoint should consume an external API to get the proper info, here is the
 - [x] Functions must be tested with pytest.
 
 For extra points:
-- [ ] Upload and deploy the solution to a free cloud service for example python anywhere or equivalent.
+- [x] Upload and deploy the solution to a free cloud service for example python anywhere or equivalent.
 - [x] Use a containering system like docker
 - [x] Use a cache to speed up the queries.
 - [x] Use a Python library (example: Matplotlib) to create a Histogram graph and display the image in a plain html.

@@ -1,6 +1,4 @@
 import requests
-import aiohttp
-import asyncio
 from helpers.logger import logging
 from collections import Counter
 
@@ -23,33 +21,29 @@ def get_all_berries() -> dict:
 
     return message
 
-async def fetch_growth_time(session: object, url: str) -> int:
+def fetch_growth_time(session: requests.Session, url: str) -> int:
     """
     Fetch the growth time of a berry from the given URL.
     Args:
-        session (aiohttp.ClientSession): The aiohttp session to use for making the request.
+        session (requests.Session): The requests session to use for making the request.
         url (str): The URL to fetch the berry data from.
     Returns:
         int: The growth time of the berry.
     """
-
     try:
-        async with session.get(url) as response:
-            response.raise_for_status()
-            message = await response.json()
-            return message["growth_time"]
-    except aiohttp.ClientError as e:
+        response = session.get(url)
+        response.raise_for_status()
+        message = response.json()
+        return message["growth_time"]
+    except requests.exceptions.RequestException as e:
         logging.error(f"Request failed: {e}")
         raise RuntimeError("Failed to fetch growth time data") from e
-    except KeyError as e:
-        logging.error(f"Key error: {e}")
-        raise RuntimeError("Failed to extract growth time from data") from e
-    except Exception as e:
-        logging.error(f"Unexpected error: {e}")
-        raise RuntimeError("An unexpected error occurred") from e
+    except ValueError as e:
+        logging.error(f"JSON decoding failed: {e}")
+        raise RuntimeError("Failed to decode growth time data") from e
 
 
-async def get_growth_times(number_of_berries: int) -> list:
+def get_growth_times(number_of_berries: int) -> list:
     """
     Fetches the growth times for a specified number of berries from the PokeAPI.
     Args:
@@ -57,12 +51,11 @@ async def get_growth_times(number_of_berries: int) -> list:
     Returns:
         list: A list of growth times for the specified number of berries.
     """
-    async with aiohttp.ClientSession() as session:
-        tasks = []
+    with requests.Session() as session:
+        growth_times = []
         for i in range(1, number_of_berries):
             url = POKE_URL + str(i)
-            tasks.append(fetch_growth_time(session, url))
-        growth_times = await asyncio.gather(*tasks)
+            growth_times.append(fetch_growth_time(session, url))
         return growth_times
 
 
@@ -77,7 +70,7 @@ def get_berries_names_and_growth(berries_data: dict) -> dict:
 
     number_of_berries = berries_data["count"]
     berries_names = [berry["name"] for berry in berries_data["results"]]
-    growth_times = asyncio.run(get_growth_times(number_of_berries))
+    growth_times = get_growth_times(number_of_berries)
 
     return berries_names, growth_times
 
