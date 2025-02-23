@@ -8,7 +8,7 @@ POKE_URL = "https://pokeapi.co/api/v2/berry/"
 
 def get_all_berries() -> dict:
     """
-    Get all the berries from the poke api
+    Get all berries data from the Poke API.
     """
     try:
         response = requests.get(POKE_URL)

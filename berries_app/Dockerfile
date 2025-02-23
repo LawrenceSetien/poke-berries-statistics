@@ -4,8 +4,8 @@ FROM python:3.10
 WORKDIR /usr/src/app
 
 # Disabling non-required actions (.pyc files and buffered logs)
-ENV PYTHONDONTWRITEBYTECODE 1 \
-    PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
 
 # Copy the application code and install Python dependencies
 COPY . .

@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from flask import Flask, Response, jsonify
+from flask_caching import Cache
 from helpers.berries_helper import (
     get_all_berries,
     get_berries_names_and_growth,
@@ -12,26 +13,31 @@ from base64 import b64encode
 
 app = Flask(__name__)
 
+# Using simple cache, no need for a more advanced type
+# Setting default cache for 600 seconds (10 minutes)
+app.config["CACHE_TYPE"] = "SimpleCache"
+app.config["CACHE_DEFAULT_TIMEOUT"] = 600
+cache = Cache(app)
+
 
 # TODO
 # 1. [x] Get all the berries
 # 2. [x] Get the growth time for each berry
 # 3. [x] Calculate the min, median, max, variance, mean and frequency of growth time
 # 4. [x] Return the result in the format above
-# 5. Test the endpoint
-
+# 5. [x] Test the endpoint
+# 6. [x] Cache responses to speed up the queries.
 
 @app.route("/health_check", methods=["GET"])
 def health_check():
     """
     Simple endpoint to check if the container is up.
-
-    Testing
     """
     return jsonify("ok")
 
 
 @app.route("/allBerryStats", methods=["GET"])
+@cache.cached()
 def allBerryStats():
     """
     Retrieve and calculate statistics for all berries.
@@ -49,6 +55,7 @@ def allBerryStats():
 
 
 @app.route("/histogram", methods=["GET"])
+@cache.cached()
 def histogram():
     """
     Generates a histogram of berry growth times and returns it as an HTML image.

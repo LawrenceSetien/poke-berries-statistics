@@ -1,8 +1,7 @@
 berries/
 .env
-berries_app/poke.log
 tests/__pycache__
 .vscode/
 berries_app/unittests/__pycache__
 berries_app/helpers/__pycache__
-poke.log
+berries_app/__pycache__

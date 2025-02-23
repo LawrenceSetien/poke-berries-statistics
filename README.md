@@ -4,14 +4,17 @@
 cp example.env .env
 ```
 
-2. Install the app:
+2. Update `PROJECT_PATH` in the `.env` to point where your project is.
+Note: This is required to execute the tests.
+
+3. Install the app:
 ```sh
 bash install.sh
 ```
 
-3. Run tests:
+4. Run tests:
 ```sh
-bash 
+bash run_tests.sh
 ```
 
 # TODO
